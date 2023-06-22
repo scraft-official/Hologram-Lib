@@ -94,7 +94,7 @@ public class HologramPool implements Listener {
   @EventHandler
   public void handleInteract(PlayerInteractEvent e) {
     final Player player = e.getPlayer();
-    if (e.getAction() != Action.LEFT_CLICK_AIR) {
+    if (e.getAction() != Action.LEFT_CLICK_AIR || e.getAction() != Action.RIGHT_CLICK_AIR) {
       return;
     }
     FST:
