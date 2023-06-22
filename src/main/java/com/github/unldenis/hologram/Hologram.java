@@ -34,7 +34,9 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Function;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.ApiStatus;
@@ -50,6 +52,7 @@ public class Hologram {
   private final Plugin plugin;
   private final Placeholders placeholders;
   private Location location;
+  private Slime slime;
 
   /**
    * @param plugin       The org.bukkit.Plugin
@@ -90,6 +93,10 @@ public class Hologram {
       }
     }
     this.lines = Collections.unmodifiableList(tempReversed);
+    
+    this.slime = (Slime) location.getWorld().spawnEntity(location, EntityType.SLIME);
+    this.slime.setInvisible(true);
+    this.slime.setSize(2);
   }
 
   @NotNull
@@ -210,6 +217,13 @@ public class Hologram {
   @NotNull
   public Placeholders getPlaceholders() {
     return placeholders;
+  }
+  
+  public void remove() {
+	  if (slime != null) {
+	        slime.remove();
+	        slime = null;
+	    }
   }
 
   @Override

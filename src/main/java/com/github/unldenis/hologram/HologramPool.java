@@ -33,6 +33,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -98,7 +99,7 @@ public class HologramPool implements Listener {
   public void handleInteract(PlayerInteractEntityEvent e) {
     final Player player = e.getPlayer();
     System.out.println(e.getRightClicked().getType());
-    if (e.getRightClicked().getType().equals(EntityType.ARMOR_STAND)) {
+    if (e.getRightClicked().getType().equals(EntityType.SLIME)) {
       return;
     }
     FST:
@@ -186,6 +187,8 @@ public class HologramPool implements Listener {
       this.holograms.remove(hologram);
       hologram.getSeeingPlayers()
           .forEach(hologram::hide);
+      
+      hologram.remove();
     }
   }
 }
