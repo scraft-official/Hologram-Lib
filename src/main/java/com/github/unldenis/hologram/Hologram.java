@@ -52,7 +52,6 @@ public class Hologram {
   private final Plugin plugin;
   private final Placeholders placeholders;
   private Location location;
-  private Slime slime;
 
   /**
    * @param plugin       The org.bukkit.Plugin
@@ -93,10 +92,6 @@ public class Hologram {
       }
     }
     this.lines = Collections.unmodifiableList(tempReversed);
-    
-    this.slime = (Slime) location.getWorld().spawnEntity(location, EntityType.SLIME);
-    this.slime.setInvisible(true);
-    this.slime.setSize(2);
   }
 
   @NotNull
@@ -218,14 +213,7 @@ public class Hologram {
   public Placeholders getPlaceholders() {
     return placeholders;
   }
-  
-  public void remove() {
-	  if (slime != null) {
-	        slime.remove();
-	        slime = null;
-	    }
-  }
-
+ 
   @Override
   public boolean equals(Object o) {
     if (this == o) {

@@ -98,8 +98,12 @@ public class HologramPool implements Listener {
   @EventHandler
   public void handleInteract(PlayerInteractEntityEvent e) {
     final Player player = e.getPlayer();
+<<<<<<< HEAD
     System.out.println(e.getRightClicked().getType());
     if (e.getRightClicked().getType().equals(EntityType.SLIME)) {
+=======
+    if (e.getAction() != Action.LEFT_CLICK_AIR || e.getAction() != Action.RIGHT_CLICK_AIR) {
+>>>>>>> parent of 79fbd66 (Replaced LMB with RMB)
       return;
     }
     FST:
@@ -187,8 +191,6 @@ public class HologramPool implements Listener {
       this.holograms.remove(hologram);
       hologram.getSeeingPlayers()
           .forEach(hologram::hide);
-      
-      hologram.remove();
     }
   }
 }
