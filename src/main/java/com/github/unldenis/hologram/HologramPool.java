@@ -36,6 +36,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -94,9 +95,10 @@ public class HologramPool implements Listener {
   }
 
   @EventHandler
-  public void handleInteract(PlayerInteractEntityEvent e) {
+  public void handleInteract(PlayerInteractAtEntityEvent e) {
     final Player player = e.getPlayer();
-    if (e.getRightClicked().getType() != EntityType.ARMOR_STAND) {
+    System.out.println(e.getRightClicked().getType());
+    if (e.getRightClicked().getType().equals(EntityType.ARMOR_STAND)) {
       return;
     }
     FST:
