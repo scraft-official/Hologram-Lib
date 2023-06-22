@@ -95,7 +95,7 @@ public class HologramPool implements Listener {
   }
 
   @EventHandler
-  public void handleInteract(PlayerInteractAtEntityEvent e) {
+  public void handleInteract(PlayerInteractEntityEvent e) {
     final Player player = e.getPlayer();
     System.out.println(e.getRightClicked().getType());
     if (e.getRightClicked().getType().equals(EntityType.ARMOR_STAND)) {
